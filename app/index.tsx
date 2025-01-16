@@ -1,7 +1,6 @@
-import { Button, Pressable, StyleSheet } from "react-native";
+import { Button, Pressable, StyleSheet, View } from "react-native";
 
 import { useVideoPlayer, VideoView } from "expo-video";
-import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { ThemedView } from "@/components/ThemedView";
 import { useEffect } from "react";
 
@@ -14,16 +13,12 @@ export default function HomeScreen() {
     player.preservesPitch = true;
   });
 
-  useEffect(() => {
-    playUrl();
-  }, []);
-
   const playUrl = () => {
     player.play();
   };
 
   return (
-    <ParallaxScrollView>
+    <ThemedView>
       <ThemedView style={styles.container}>
         <ThemedView style={styles.button}>
           <Button
@@ -42,7 +37,7 @@ export default function HomeScreen() {
           nativeControls={false}
         />
       </ThemedView>
-    </ParallaxScrollView>
+    </ThemedView>
   );
 }
 
@@ -65,7 +60,6 @@ const styles = StyleSheet.create({
   video: {
     width: 300,
     height: 300,
-    borderRadius: 150,
     marginTop: 30,
   },
   container: {
